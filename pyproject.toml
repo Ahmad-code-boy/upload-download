@@ -3,7 +3,7 @@ name = "hookdemo"
 authors = [
     { name = "nextash", email = "support@nextash.com"}
 ]
-description = "Practice"
+description = "Ahmad"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

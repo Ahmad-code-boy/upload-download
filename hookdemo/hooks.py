@@ -1,7 +1,7 @@
 app_name = "hookdemo"
 app_title = "Hookdemo"
 app_publisher = "nextash"
-app_description = "Ahmad"
+app_description = "a"
 app_email = "support@nextash.com"
 app_license = "mit"
 

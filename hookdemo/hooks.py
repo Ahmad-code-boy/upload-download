@@ -10,6 +10,16 @@ app_license = "mit"
 
 # required_apps = []
 
+
+# after_migrate = [
+#     "hookdemo.patches1.sale.custom_before_save"
+# ]
+
+app_include_py = [
+    "hookdemo/patches1/sale.py"
+]
+
+
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
@@ -43,11 +53,15 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Sales Invoice" : "public/js/sales_invoice.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
+# myapp/hooks.py
+# hooks.py
+# app_include_py = [
+#     "/assets/hookdemo/patches1/custom_msg.py"
+# ]
 # Svg Icons
 # ------------------
 # include app icons in desk
@@ -130,7 +144,7 @@ app_license = "mit"
 # Override standard doctype classes
 
 # override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
+# 	"Customer": "hookdemo.overrides.customer.CustomCustomer"
 # }
 
 # Document Events
@@ -145,6 +159,20 @@ app_license = "mit"
 # 	}
 # }
 
+
+
+
+
+doc_events = {
+    "Customer": {
+        "after_insert": "hookdemo.apis.signup.after_insert"
+    },
+    "Ahmad": {
+        "after_insert": "hookdemo.hookdemo.doctype.ahmad.ahmad.create_saeed_doc"
+    }
+
+
+}
 # Scheduled Tasks
 # ---------------
 
@@ -165,6 +193,13 @@ app_license = "mit"
 # 		"hookdemo.tasks.monthly"
 # 	],
 # }
+# scheduler_events = {
+#     "cron": {
+#         "*/4 * * * *": [ 
+#             "hookdemo.ahmad.auto_submit_invoices"
+#         ]
+#     }
+# }
 
 # Testing
 # -------
@@ -174,9 +209,10 @@ app_license = "mit"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "hookdemo.event.get_events"
-# }
+override_whitelisted_methods = {
+    "frappe.desk.search.search_link": "hookdemo.apis.ahmad.custom_search_link"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
